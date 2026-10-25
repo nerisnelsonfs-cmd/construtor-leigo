@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>O Construtor Leigo — construa com IA, sem ser programador</title>
+<meta name="description" content="Guia prático em PDF para quem não é programador construir sistemas com inteligência artificial, com segurança. 9 capítulos com histórias reais e pedidos prontos para copiar e colar. R$ 19,90.">
+<meta property="og:type" content="product">
+<meta property="og:title" content="O Construtor Leigo — construa com IA, sem ser programador">
+<meta property="og:description" content="9 capítulos com histórias reais e pedidos prontos para copiar e colar na IA. Ebook em PDF, R$ 19,90, garantia de 7 dias.">
+<meta property="og:image" content="capa.jpg">
+<meta name="theme-color" content="#13294B">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Página de vendas do livro. Uma coluna no celular; o preço e o botão aparecem logo no começo e ficam presos embaixo da tela. */
+:root{
+  --azul:#13294B; --azul-2:#1B3A6B; --ambar:#F2B33D; --ambar-escuro:#8A5E07;
+  --papel:#F6F7FA; --cartao:#FFFFFF; --tinta:#18202E; --apoio:#4B5563; --linha:#D8DEE8; --ok:#1E7B46;
+  --f-titulo:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+  --f-texto:"IBM Plex Sans","Segoe UI",system-ui,sans-serif;
+  --f-rotulo:"IBM Plex Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--papel);color:var(--tinta);font-family:var(--f-texto);font-size:17px;line-height:1.6;
+  padding:0 max(16px,env(safe-area-inset-left)) 96px max(16px,env(safe-area-inset-right))}
+.miolo{max-width:980px;margin:0 auto}
+h1,h2,h3{font-family:var(--f-titulo);color:var(--azul);line-height:1.1;text-wrap:balance;margin:0}
+p{margin:0}
+img{max-width:100%;height:auto}
+.rotulo{font-family:var(--f-rotulo);font-weight:500;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ambar-escuro)}
+
+.abertura{display:grid;gap:22px;padding-block:22px 34px;align-items:center}
+.capa{display:block;width:min(52%,220px);margin:0 auto;border-radius:10px;box-shadow:0 14px 40px rgba(19,41,75,.28)}
+.chamada{display:flex;flex-direction:column;gap:14px}
+.chamada h1{font-weight:800;font-size:clamp(1.9rem,6.4vw,3rem);letter-spacing:-.02em}
+.chamada .sub{font-size:1.1rem;color:var(--apoio)}
+.caixa-preco{background:var(--cartao);border:1px solid var(--linha);border-radius:16px;padding:16px 18px;display:flex;flex-direction:column;gap:12px}
+.preco{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.preco b{font-family:var(--f-titulo);font-weight:800;font-size:2.5rem;color:var(--azul);line-height:1}
+.preco span{color:var(--apoio);font-size:.95rem}
+.botao{display:flex;justify-content:center;align-items:center;min-height:58px;padding:0 24px;border-radius:12px;
+  background:var(--ambar);color:#13294B;font-family:var(--f-titulo);font-weight:800;font-size:1.15rem;text-decoration:none;text-align:center}
+.botao:hover{filter:brightness(1.05)}
+.botao:focus-visible{outline:3px solid var(--azul-2);outline-offset:3px}
+.selos{list-style:none;margin:0;padding:0;display:grid;gap:6px;font-size:.95rem;color:var(--tinta)}
+.selos li{display:flex;gap:10px;align-items:flex-start}
+.selos li::before{content:"✓";color:var(--ok);font-weight:700}
+@media (min-width:760px){ .abertura{grid-template-columns:320px 1fr;padding-block:44px 52px} .capa{margin:0;width:100%} }
+
+section{padding-block:32px;border-top:1px solid var(--linha)}
+section h2{font-weight:800;font-size:clamp(1.5rem,4.4vw,2rem);margin:6px 0 16px}
+.texto{max-width:62ch;display:flex;flex-direction:column;gap:12px}
+
+.regras{list-style:none;margin:0;padding:0;display:grid;gap:10px;counter-reset:r}
+.regras li{display:grid;grid-template-columns:2.2rem 1fr;gap:10px;align-items:baseline;counter-increment:r}
+.regras li::before{content:counter(r);font-family:var(--f-titulo);font-weight:800;font-size:1.4rem;color:var(--ambar)}
+.regras b{color:var(--azul)}
+
+.telas{display:grid;gap:18px}
+.tela{margin:0;display:flex;flex-direction:column;gap:8px;min-width:0}
+.tela img{display:block;width:100%;border-radius:10px;border:1px solid var(--linha);background:var(--cartao)}
+.tela.alta img{width:auto;max-height:420px;margin:0 auto}
+.tela figcaption{font-size:.92rem;color:var(--apoio)}
+@media (min-width:760px){ .telas{grid-template-columns:1fr 1fr} .tela.larga{grid-column:1 / -1} }
+
+.recebe{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.recebe li{padding-left:28px;position:relative}
+.recebe li::before{content:"";position:absolute;left:4px;top:.55em;width:12px;height:12px;border-radius:3px;background:var(--ambar)}
+
+.duas{display:grid;gap:20px}
+@media (min-width:760px){ .duas{grid-template-columns:1fr 1fr} }
+.duas h3{font-size:1.15rem;margin-bottom:8px}
+.duas ul{margin:0;padding-left:20px;display:grid;gap:6px}
+
+.garantia-box{display:flex;gap:16px;align-items:flex-start;background:var(--cartao);border:2px solid var(--ambar);border-radius:16px;padding:18px}
+.garantia-box .selo7{flex:0 0 auto;width:64px;height:64px;border-radius:50%;background:var(--azul);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:var(--f-titulo);font-weight:800;line-height:1}
+.garantia-box .selo7 b{font-size:1.6rem;color:var(--ambar)}
+.garantia-box .selo7 small{font-size:.62rem;letter-spacing:.06em}
+
+details{border-bottom:1px solid var(--linha);padding-block:10px}
+summary{cursor:pointer;font-weight:600;color:var(--azul);min-height:44px;display:flex;align-items:center}
+details p{color:var(--apoio);padding-top:4px}
+
+.final{display:flex;flex-direction:column;gap:14px}
+footer{border-top:1px solid var(--linha);padding-block:26px 30px;font-size:.85rem;color:var(--apoio);display:grid;gap:8px}
+footer a{color:var(--azul-2)}
+
+/* barra de compra presa embaixo (celular) */
+.barra{position:fixed;left:0;right:0;bottom:0;z-index:5;background:rgba(19,41,75,.97);color:#fff;
+  padding:10px max(14px,env(safe-area-inset-left)) calc(10px + env(safe-area-inset-bottom)) max(14px,env(safe-area-inset-right));
+  display:flex;align-items:center;gap:12px;justify-content:space-between;transform:translateY(110%);transition:transform .25s}
+.barra.mostra{transform:none}
+.barra .p{font-family:var(--f-titulo);font-weight:800;font-size:1.3rem;line-height:1.1}
+.barra .p small{display:block;font-family:var(--f-texto);font-weight:400;font-size:.78rem;color:#C9D4E5}
+.barra .botao{min-height:48px;font-size:1rem;padding:0 18px;flex:0 0 auto}
+@media (prefers-reduced-motion:reduce){ .barra{transition:none} html{scroll-behavior:auto} }
+</style>
+</head>
+<body>
+<main class="miolo">
+  <div class="abertura">
+    <img class="capa" src="capa.jpg" width="900" height="1200" alt="Capa do livro O Construtor Leigo: construa seu primeiro projeto com IA, sem ser programador.">
+    <div class="chamada">
+      <div class="rotulo">Livro digital · guia prático · 9 capítulos</div>
+      <h1>Você não precisa ser programador para construir um sistema de verdade.</h1>
+      <p class="sub">Eu não sou programador. Com inteligência artificial, construí o sistema da empresa da minha família. Neste guia eu mostro como fazer isso <b>com segurança</b>: 9 regras, cada uma nascida de um erro real, com pedidos prontos para copiar e colar na IA.</p>
+      <div class="caixa-preco" id="comprar">
+        <div class="preco"><b>R$ 19,90</b><span>pagamento único · livro digital (PDF)</span></div>
+        <a class="botao" href="#" data-checkout>Quero o livro</a>
+        <ul class="selos">
+          <li>Pague com Pix, cartão ou boleto</li>
+          <li>Chega na hora, no seu e-mail</li>
+          <li>Garantia de 7 dias: não gostou, recebe o dinheiro de volta</li>
+          <li>Pagamento seguro pela Kiwify</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <section>
+    <div class="rotulo">Quem escreveu</div>
+    <h2>Eu não sou programador</h2>
+    <div class="texto">
+      <p>Meu nome é Nerisnelson e eu nunca estudei programação. Mesmo assim, com a ajuda da inteligência artificial, construí o sistema de gestão da empresa da minha família, uma assistente de voz para pessoas com deficiência visual, baixa visão e para idosos, e uma secretária que agenda clientes pelo WhatsApp.</p>
+      <p>No caminho, errei muito. A IA escreve com muita segurança até quando está chutando: inventa telefone, diz que consertou sem ter consertado, deixa senha escrita onde qualquer um lê. Anotei cada erro com data e transformei cada um em uma regra. Este guia junta essas regras, para você não precisar errar igual.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="rotulo">O que tem dentro</div>
+    <h2>As 9 regras do construtor</h2>
+    <ol class="regras">
+      <li><span><b>Você não precisa ser programador.</b> O seu papel é decidir, explicar o problema e cobrar prova.</span></li>
+      <li><span><b>Um sistema de cada vez.</b> A ordem certa para construir sem se perder.</span></li>
+      <li><span><b>Não deixe a IA inventar.</b> Três perguntas que desmascaram um chute.</span></li>
+      <li><span><b>A Regra do Espelho.</b> "Resolveu?" só tem três respostas: sim, não ou não sei.</span></li>
+      <li><span><b>Backup antes de mexer.</b> Como voltar em minutos quando algo quebra.</span></li>
+      <li><span><b>Publicou, conferiu.</b> As cinco conferências depois de colocar no ar.</span></li>
+      <li><span><b>Senha e chave nunca ficam no código.</b> O que fazer, e o que fazer se vazar.</span></li>
+      <li><span><b>Tela que um leigo entende em 3 segundos.</b> Onde estou, o que faço agora, qual o próximo passo.</span></li>
+      <li><span><b>A memória do projeto.</b> Os cadernos que fazem a IA continuar de onde parou.</span></li>
+    </ol>
+  </section>
+
+  <section>
+    <div class="rotulo">Histórias e telas reais</div>
+    <h2>Nada foi inventado para ficar bonito</h2>
+    <div class="texto" style="margin-bottom:18px"><p>Cada capítulo conta uma história real, com data, e mostra telas de verdade dos sistemas que eu construí. Os dados sensíveis foram borrados de propósito.</p></div>
+    <div class="telas">
+      <figure class="tela larga"><img src="nexus.jpg" width="1200" height="592" loading="lazy" alt="Painel de controle com os sistemas do autor, com nomes sensíveis borrados."><figcaption>O painel que junta os sistemas que fui construindo, um de cada vez.</figcaption></figure>
+      <figure class="tela"><img src="trilha.jpg" width="1200" height="624" loading="lazy" alt="Tela da Máquina de Trilha, que cria música original para vídeos."><figcaption>A Máquina de Trilha: a história de quando o som não saía está no capítulo 4.</figcaption></figure>
+      <figure class="tela alta"><img src="aurora.jpg" width="446" height="855" loading="lazy" alt="Tela da assistente de voz, com botões grandes para ler papel, remédio, preço e boleto."><figcaption>A assistente de voz para pessoas com deficiência visual, baixa visão e idosos.</figcaption></figure>
+    </div>
+  </section>
+
+  <section>
+    <div class="rotulo">O que você recebe</div>
+    <h2>Um guia para usar, não só para ler</h2>
+    <ul class="recebe">
+      <li>O livro em PDF, com 51 páginas, para ler no celular ou no computador.</li>
+      <li>Pedidos prontos para copiar e colar na IA em cada capítulo, e todos juntos no final.</li>
+      <li>Exercícios curtos, de três passos, no fim de cada capítulo.</li>
+      <li>Um glossário com as palavras técnicas explicadas em português simples.</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="rotulo">Antes de comprar</div>
+    <h2>Para quem é este guia</h2>
+    <div class="duas">
+      <div><h3>É para você que</h3><ul>
+        <li>tem uma ideia ou um problema no trabalho e quer resolver com um sistema, sem saber programar;</li>
+        <li>já usa IA, mas quer errar menos;</li>
+        <li>quer cuidar dos dados de quem confia em você.</li></ul></div>
+      <div><h3>Não é para você que</h3><ul>
+        <li>procura um jeito de ficar rico rápido;</li>
+        <li>quer um curso de programação ou de uma ferramenta específica;</li>
+        <li>quer que alguém construa por você.</li></ul></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="garantia-box">
+      <div class="selo7" aria-hidden="true"><b>7</b><small>DIAS</small></div>
+      <div class="texto">
+        <h3>Garantia de 7 dias</h3>
+        <p>Leia o livro com calma. Se não for para você, peça o dinheiro de volta em até 7 dias pela própria Kiwify, sem precisar explicar o motivo.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="rotulo">Dúvidas</div>
+    <h2>Perguntas frequentes</h2>
+    <details><summary>Preciso saber programar?</summary><p>Não. O guia foi feito para quem nunca programou.</p></details>
+    <details><summary>Serve para qual inteligência artificial?</summary><p>O método vale para qualquer uma (ChatGPT, Gemini, Claude e outras). O guia ensina como pedir e como conferir, não uma ferramenta específica.</p></details>
+    <details><summary>Como recebo o livro?</summary><p>Logo depois do pagamento, pelo e-mail e na área de membros da Kiwify. No Pix, a liberação é na hora.</p></details>
+    <details><summary>Vou ganhar dinheiro com isso?</summary><p>O guia não promete renda. Ele ensina a construir com segurança e a errar menos.</p></details>
+    <details><summary>E se eu não gostar?</summary><p>Você tem 7 dias para pedir o dinheiro de volta pela própria Kiwify.</p></details>
+    <details><summary>Posso passar o arquivo para alguém?</summary><p>Não. A compra dá direito a uma cópia para uso pessoal.</p></details>
+  </section>
+
+  <section class="final">
+    <h2>Comece pelo primeiro tijolo</h2>
+    <div class="caixa-preco">
+      <div class="preco"><b>R$ 19,90</b><span>Pix, cartão ou boleto · garantia de 7 dias</span></div>
+      <a class="botao" href="#" data-checkout>Quero o livro</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>Este guia é educativo e conta a experiência real do autor. Ele não garante resultado e não substitui advogado, contador nem especialista em segurança. Os nomes de produtos e empresas citados pertencem aos seus donos; o guia não tem ligação com eles.</p>
+    <p>Vendido por Nerisnelson Ferreira da Silva · CPF: ***.906.491-** · Endereço: Av. W-6, Chácara 262, Chácara São Pedro, Aparecida de Goiânia - GO, CEP 74923-225 · Contato: <a href="mailto:nerisnelsonfs@gmail.com">nerisnelsonfs@gmail.com</a> · TikTok: @nerisnelsonfs</p>
+    <p>© 2026 Nerisnelson Ferreira da Silva. Todos os direitos reservados.</p>
+  </footer>
+</main>
+
+<div class="barra" id="barra" aria-hidden="true">
+  <div class="p">R$ 19,90<small>Pix ou cartão · garantia 7 dias</small></div>
+  <a class="botao" href="#" data-checkout tabindex="-1">Quero o livro</a>
+</div>
+
+<script>
+  // Link do pagamento na Kiwify. O "utm_source" mostra na Kiwify que a venda veio desta página.
+  const CHECKOUT = "https://pay.kiwify.com.br/edmlRD8";
+  const origem = new URLSearchParams(location.search).get("utm_source") || "pagina";
+  document.querySelectorAll("[data-checkout]").forEach(a => { a.href = CHECKOUT + "?utm_source=" + encodeURIComponent(origem) + "&utm_medium=pagina-de-vendas"; });
+  // A barra de baixo aparece depois que a pessoa passa do primeiro botão.
+  const barra = document.getElementById("barra"), alvo = document.getElementById("comprar");
+  if ("IntersectionObserver" in window) new IntersectionObserver(([e]) => {
+    const mostra = !e.isIntersecting && e.boundingClientRect.top < 0;
+    barra.classList.toggle("mostra", mostra); barra.setAttribute("aria-hidden", String(!mostra));
+    barra.querySelector("a").tabIndex = mostra ? 0 : -1;
+  }).observe(alvo);
+</script>
+</body>
+</html>
